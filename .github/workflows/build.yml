@@ -17,7 +17,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install -r requirements.txt
-          pip intall pyinstaller
+          pip install pyinstaller
       - name: Build with PyInstaller
         run: pyinstaller --onefile --name whisperr whisperr.py
       - name: Create Release
