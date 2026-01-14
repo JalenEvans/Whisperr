@@ -12,12 +12,31 @@ from cryptography.fernet import Fernet
 from cryptography.fernet import InvalidToken
 from pathlib import Path
 
+__version__ = "1.0.0"
+
 app = typer.Typer(help="Convert text to audio and back.")
 
 # Protocol Markers
 DIR_START = b'\xff'
 FILE_START = b'\xfe'
 PROTECTED = b'\xfd'
+
+def version_callback(value: bool):
+    if value:
+        typer.secho(f"Whisperr CLI Version: {__version__}")
+        raise typer.Exit()
+
+@app.callback()
+def main(
+    verstion: bool = typer.Option(None, "--version", "-v", callback=version_callback, is_eager=True, help="Shows the version of Whisperr")
+):
+    """
+    Convert text to .wav files and back. Protect it with a password and encrypting files before conversion.
+    
+    :param verstion: Description
+    :type verstion: bool
+    """
+    pass
 
 def get_fernet(password: str, salt: bytes) -> Fernet:
     """

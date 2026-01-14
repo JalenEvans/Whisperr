@@ -1,0 +1,29 @@
+name: Build Executable
+# Runs whenever a new version tag is added to a push
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - run: echo "Building an executable of Whisper on new version"
+      - uses: actions/checkout@v6
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements
+          pip install pyinstaller
+      - name: Build with PyInstaller
+        run: pyinstaller --onefile --name whisperr whisperr.py
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/whisperr.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
