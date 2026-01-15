@@ -3,26 +3,20 @@ AppName=Whisperr
 AppVersion=1.0.0
 DefaultDirName={autopf}\Whisperr
 DefaultGroupName=Whisperr
+OutputBaseFilename=Whisperr_Installer_1_0_0
 Compression=lzma
 SolidCompression=yes
 PrivilegesRequired=admin
 ChangesEnvironment=yes
 
 [Files]
-Source: "dist\whisperr.exe";
-DestDir:"{app}"
+Source: "dist\whisperr.exe"; DestDir:"{app}"
 
 [Icons]
-Name:"{group}\Whisperr";
-Filename: "{app}\whisperr.exe"
+Name:"{group}\Whisperr"; Filename: "{app}\whisperr.exe"
 
 [Registry]
-Root: HKLM; 
-Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment";
-ValueType: expandsz; 
-ValueName: "Path";
-ValueData: "{olddata};{app}";
-Check: NeedsAddPath('{app}')
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{app}"; Check: NeedsAddPath('{app}')
 
 [Code]
 function NeedsAddPath(Param: string): boolean;
