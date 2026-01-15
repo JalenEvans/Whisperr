@@ -9,7 +9,7 @@ This process is done through encoding the text of the files into binary and crea
 In the releases section, you can download the installer for the latest version. Becuase ths is an independent project and I did not purchase any certificates or sumbit this to Microsoft, Windows will block the installation. You can manually bypass this by clicking "More Info" and then "Run Anways"
 
 <div style="margin: 5px; display: flex; gap: 10px; justify-content: center;">
-    <img src="more-info.png" alt="More Info Image" width=300> <img src="run-anyways.png" alt="Run Anyways Image" width=300>
+    <img src="images/more-info.png" alt="More Info Image" width=300> <img src="images/run-anyways.png" alt="Run Anyways Image" width=300>
 </div>
 
 After running the installer, Whisperr should be able to run globally in your command line.
