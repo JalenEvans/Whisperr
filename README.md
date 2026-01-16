@@ -1,6 +1,6 @@
 # Whisperr
 
-Whisperr is a CLI tool built using [Typer](https://typer.tiangolo.com/) that converts files or entire directories into a .wav bitstream and back. These streams can also be protected with a password and encrypting the files before conversion.
+Whisperr is a Command Line Interface (CLI) tool built using [Typer](https://typer.tiangolo.com/) that converts files or entire directories into a .wav bitstream and back. These streams can also be protected with a password and encrypting the files before conversion.
 
 This process is done through encoding the text of the files into binary and creating a .wav file with those bits. The reverse is done for the decoding proccess.
 
@@ -50,12 +50,14 @@ C:\Users\UserName> whisperr encode --help
 
  Transform a file or directory into a playable .wav bitstream
 
- :param input_file: Description
- :type input_file: Path
- :param output_file: Description
+ :param src: File to encode into a bitstream.
+ :type src: Path
+ :param output_file: Optional path for output.
  :type output_file: Path
  :param rate: Description
  :type rate: int
+ :param protect: Option to protect encoded bitstream with a password.
+ :type protect: bool
 
 ╭─ Arguments ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │ *    src      PATH  The text file to convert. [required]                                                                                                                                                                  │
@@ -68,6 +70,8 @@ C:\Users\UserName> whisperr encode --help
 ╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
+⚠️ Whisperr does not store your password anywhere. Whisperr is not responsible for any data loss during encoding and/or decoding
+
 ### Decode
 
 Used by running `whisperr decode <input_file>`. Has options for an output file and if the file is protected, will prompt you with a password before decoding begins.
@@ -79,9 +83,9 @@ C:\Users\UserName> whisperr decode --help
 
  Transform a .wav bitstream into a text file.
 
- :param input_file: Description
+ :param input_file: Bitstream to decode to a file.
  :type input_file: Path
- :param output_file: Description
+ :param output_file: Optional path for an output file. Must add .wav extension.
  :type output_file: Path
 
 ╭─ Arguments ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
